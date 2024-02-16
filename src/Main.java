@@ -1,3 +1,4 @@
+import br.com.dio.desafio.dominio.Conteudo;
 import br.com.dio.desafio.dominio.Curso;
 import br.com.dio.desafio.dominio.Mentoria;
 
@@ -26,6 +27,13 @@ public class Main {
         System.out.println(curso1 + "\n");
         System.out.println(curso2 + "\n");
         System.out.println(mentoria + "\n");
+
+// Polimorfismo
+//  Tudo que existe em Conteudo existe em Curso
+//  Mas nem tudo que existe em Curso existe em Conteudo
+//
+//        Conteudo conteudo = new Curso();
+
 
 
     }
