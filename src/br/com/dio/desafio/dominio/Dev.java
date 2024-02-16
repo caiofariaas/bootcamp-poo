@@ -2,6 +2,7 @@ package br.com.dio.desafio.dominio;
 
 import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class Dev {
@@ -12,10 +13,28 @@ public class Dev {
     private Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
     private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
 
+// é necessário que ao se inscrever em um bootcamp, todos os conteúdos presentes nele
+// automaticamente se direcionem ao Set de conteudosIncritos
+
     public void inscreverBootcamp(Bootcamp bootcamp){
+
+        // Adicionando ao Set todos os conteúdos presentes no BootCamp
+
+        this.conteudosInscritos.addAll(bootcamp.getConteudos());
     }
 
+// Este método é responsável por adicionar um conteúdo concluido ao set de conteúdos concluidos
+
     public void progredir(){
+        Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
+
+        if(conteudo.isPresent()){
+            this.conteudosConcluidos.add(conteudo.get());
+            this.conteudosInscritos.remove(conteudo.get());
+        }
+        else {
+            System.err.println("Você não esta matriculado em nenhum conteúdo!");
+        }
     }
 
     public void calcularXp(){
