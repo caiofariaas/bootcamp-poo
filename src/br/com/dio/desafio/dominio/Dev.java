@@ -26,6 +26,13 @@ public class Dev {
 // Este método é responsável por adicionar um conteúdo concluido ao set de conteúdos concluidos
 
     public void progredir(){
+
+        // pegamos os conteudos inscritos e com o stream() ganhamos acesso a um método chamado findFirst()
+        // que usamos para pegar sempre o primeiro conteúdo, pois, estamos fazendo por ordem!
+
+        // o stream() é um método presente em coleções que te da acesso a muitos outros métodos úteis!
+        // como por exemplo .map(), .filter(), .mapToInt(), .findAny(), etc...
+
         Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
 
         if(conteudo.isPresent()){
