@@ -21,6 +21,10 @@ public class Dev {
         // Adicionando ao Set todos os conteúdos presentes no BootCamp
 
         this.conteudosInscritos.addAll(bootcamp.getConteudos());
+
+        // pegamos o Set<> que possui os devs inscritos no bootcamp e usando o this adicionamos o novo
+
+        bootcamp.getDevsInscritos().add(this);
     }
 
 // Este método é responsável por adicionar um conteúdo concluido ao set de conteúdos concluidos
@@ -35,16 +39,29 @@ public class Dev {
 
         Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
 
+        // caso exista o conteúdo e o colocamos como concluído e removemos das pendentes
+
         if(conteudo.isPresent()){
             this.conteudosConcluidos.add(conteudo.get());
             this.conteudosInscritos.remove(conteudo.get());
         }
         else {
+
+            // System.err é o output padrão de erros do sistema
+
             System.err.println("Você não esta matriculado em nenhum conteúdo!");
         }
     }
 
-    public void calcularXp(){
+    public double calcularXp(){
+
+        // Pegamos os conteúdos concluídos e através do stream API utilizamos o método mapToDouble
+        // passando a função que calcula o XP individual por conteúdo, e por fim nós somamos tudo
+
+        return  this.conteudosConcluidos.stream()
+                .mapToDouble(conteudo -> conteudo.calcularXp())
+                .sum();
+
     }
 
     public String getNome() {
