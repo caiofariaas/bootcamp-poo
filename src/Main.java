@@ -55,13 +55,19 @@ public class Main {
 
 
         dev1.progredir();
-        System.out.println(dev1.getConteudosInscritos());
-        System.out.println(dev1.getConteudosConcluidos());
+        dev1.progredir();
 
-        System.out.println();
+        System.out.println("Camila - Inscritos : " + dev1.getConteudosInscritos());
+        System.out.println("Camila - Concluídos : " + dev1.getConteudosConcluidos());
+        System.out.println("XP: " + dev1.calcularXp());
+        System.out.println("---");
 
         dev2.progredir();
-        System.out.println(dev2.getConteudosInscritos());
-        System.out.println(dev2.getConteudosConcluidos());
+        dev2.progredir();
+        dev2.progredir();
+
+        System.out.println("João - Inscritos : " +dev2.getConteudosInscritos());
+        System.out.println("João - Concluídos : " +dev2.getConteudosConcluidos());
+        System.out.println("XP: " + dev2.calcularXp());
     }
 }
